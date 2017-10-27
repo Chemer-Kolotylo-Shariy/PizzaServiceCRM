@@ -2,9 +2,12 @@ package com.pizza.project.model;
 
 import com.pizza.project.model.enums.Role;
 
+
+
 import java.util.List;
 
-public class User {
+public class Client {
+
     private Long id;
     private String name;
     private String surname;
@@ -13,11 +16,14 @@ public class User {
     private String password;
     private Role role;
     private List<BankCard> bankCards;
+    private List<Address> addresses;
 
-    public User() {
+    public Client() {
     }
 
-    public User(Long id, String name, String surname, String email, String phone, String password, Role role, List<BankCard> bankCards) {
+    public Client(Long id, String name, String surname,
+                  String email, String phone, String password,
+                  Role role, List<BankCard> bankCards, List<Address> addresses) {
         this.id = id;
         this.name = name;
         this.surname = surname;
@@ -26,6 +32,7 @@ public class User {
         this.password = password;
         this.role = role;
         this.bankCards = bankCards;
+        this.addresses = addresses;
     }
 
     public Long getId() {
@@ -90,5 +97,13 @@ public class User {
 
     public void setBankCards(List<BankCard> bankCards) {
         this.bankCards = bankCards;
+    }
+
+    public List<Address> getAddresses() {
+        return addresses;
+    }
+
+    public void setAddresses(List<Address> addresses) {
+        this.addresses = addresses;
     }
 }
