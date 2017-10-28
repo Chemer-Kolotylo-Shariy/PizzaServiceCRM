@@ -21,6 +21,16 @@ public class Client {
     public Client() {
     }
 
+    public Client(Long id, String name, String surname, String email, String phone, String password, Role role) {
+        this.id = id;
+        this.name = name;
+        this.surname = surname;
+        this.email = email;
+        this.phone = phone;
+        this.password = password;
+        this.role = role;
+    }
+
     public Client(Long id, String name, String surname,
                   String email, String phone, String password,
                   Role role, List<BankCard> bankCards, List<Address> addresses) {
@@ -105,5 +115,20 @@ public class Client {
 
     public void setAddresses(List<Address> addresses) {
         this.addresses = addresses;
+    }
+
+    @Override
+    public String toString() {
+        return "Client{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", surname='" + surname + '\'' +
+                ", email='" + email + '\'' +
+                ", phone='" + phone + '\'' +
+                ", password='" + password + '\'' +
+                ", role=" + role +
+                ", bankCards=" + bankCards +
+                ", addresses=" + addresses +
+                '}';
     }
 }
