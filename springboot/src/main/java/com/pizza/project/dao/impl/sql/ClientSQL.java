@@ -9,5 +9,13 @@ public final class ClientSQL {
     public static final String PARAM_PHONE = "phone";
     public static final String PARAM_PASSWORD = "password";
     public static final String PARAM_ID_ROLE = "id_role";
+    public static final String PARAM_ROLE = "role";
+
+    public static final String QUERY_GET_BY_ID = "SELECT c.id, name, surname, email, " +
+            "phone, password, id_role, role, r.id " +
+            "FROM client c " +
+            "INNER JOIN role r " +
+            "ON c.id_role = r.id " +
+            "WHERE c.id = :id;";
 
 }
