@@ -8,11 +8,11 @@ public enum Role {
     ROLE_COURIER(5, "ROLE_COURIER");
 
     private Integer id;
-    private String name;
+    private String role;
 
     Role(Integer id, String name) {
         this.id = id;
-        this.name = name;
+        this.role = name;
     }
 
     public Integer getId() {
@@ -24,10 +24,10 @@ public enum Role {
     }
 
     public String getName() {
-        return name;
+        return role;
     }
 
     public void setName(String name) {
-        this.name = name;
+        this.role = name;
     }
 }
