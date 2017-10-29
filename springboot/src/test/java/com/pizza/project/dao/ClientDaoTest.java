@@ -18,7 +18,7 @@ public class ClientDaoTest {
     @Test
     public void getById(){
         Client client = clientDao.get(1L);
-        Assert.assertNotNull("User not finded", client);
+        Assert.assertNotNull("User not found", client);
         System.out.println("I got user " + client.getName());
     }
 }
