@@ -12,4 +12,11 @@ public class AddressSQL {
             "FROM address " +
             "WHERE id = :id;";
 
+    public static final String QUERY_GET_ADDRESS_BY_CLIENT_ID_AND_LABLE_NOT_NULL = "" +
+            "SELECT a.id, street, house, apartament, lable " +
+            "FROM address a " +
+            "INNER JOIN client_address c " +
+            "ON a.id = c.id_address " +
+            "WHERE lable IS NOT NULL AND c.id_client = :id_client";
+
 }
