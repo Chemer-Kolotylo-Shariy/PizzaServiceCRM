@@ -36,13 +36,15 @@ public class ClientDaoImpl implements ClientDao {
     }
 
     @Override
-    public Client getByPhone(String phone) {
-        return null;
+    public Client getByPhone(Long phone) {
+        SqlParameterSource parameter = new MapSqlParameterSource()
+                .addValue(ClientSQL.PARAM_PHONE, phone);
+        return jdbcTemplate.query(ClientSQL.QUERY_GET_BY_PHONE, parameter, clientExtractor).stream().findFirst().orElse(null);
     }
 
     @Override
-    public List getAllClients() {
-        return null;
+    public List<Client> getAllClients() {
+        return jdbcTemplate.query(ClientSQL.QUERY_GET_ALL_CLIENTS, clientExtractor);
     }
 
     @Override
@@ -84,7 +86,7 @@ public class ClientDaoImpl implements ClientDao {
                 client.setName(resultSet.getString(ClientSQL.PARAM_NAME));
                 client.setSurname(resultSet.getString(ClientSQL.PARAM_SURNAME));
                 client.setEmail(resultSet.getString(ClientSQL.PARAM_EMAIL));
-                client.setPhone(resultSet.getString(ClientSQL.PARAM_PHONE));
+                client.setPhone(Long.parseLong(resultSet.getString(ClientSQL.PARAM_PHONE)));
                 client.setPassword(resultSet.getString(ClientSQL.PARAM_PASSWORD));
                 client.setRole(Role.valueOf(resultSet.getString(ClientSQL.PARAM_ROLE)));
 
