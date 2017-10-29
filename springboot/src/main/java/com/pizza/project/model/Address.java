@@ -6,19 +6,20 @@ public class Address {
 
     private Long id;
     private String street;
-    private String house;
-    private String apartament;
+    private int house;
+    private int apartament;
+    private String lable;
     private List<Client> clients;
 
     public Address() {
     }
 
-    public Address(Long id, String street, String house, String apartament, List<Client> clients) {
+    public Address(Long id, String street, int house, int apartament, String lable) {
         this.id = id;
         this.street = street;
         this.house = house;
         this.apartament = apartament;
-        this.clients = clients;
+        this.lable = lable;
     }
 
     public Long getId() {
@@ -37,19 +38,27 @@ public class Address {
         this.street = street;
     }
 
-    public String getHouse() {
+    public int getHouse() {
         return house;
     }
 
-    public void setHouse(String house) {
+    public void setHouse(int house) {
         this.house = house;
     }
 
-    public String getApartament() {
+    public int getApartament() {
         return apartament;
     }
 
-    public void setApartament(String apartament) {
+    public String getLable() {
+        return lable;
+    }
+
+    public void setLable(String lable) {
+        this.lable = lable;
+    }
+
+    public void setApartament(int apartament) {
         this.apartament = apartament;
     }
 
@@ -59,5 +68,16 @@ public class Address {
 
     public void setClients(List<Client> clients) {
         this.clients = clients;
+    }
+
+    @Override
+    public String toString() {
+        return "Address{" +
+                "id=" + id +
+                ", street='" + street + '\'' +
+                ", house=" + house +
+                ", apartament=" + apartament +
+                ", lable='" + lable + '\'' +
+                '}';
     }
 }

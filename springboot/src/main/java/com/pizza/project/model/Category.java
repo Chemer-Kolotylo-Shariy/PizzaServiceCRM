@@ -4,15 +4,15 @@ import java.util.List;
 
 public class Category {
     private int id;
-    private String name;
+    private String category;
     private List<Product>products;
 
     public Category() {
     }
 
-    public Category(int id, String name, List<Product> products) {
+    public Category(int id, String category, List<Product> products) {
         this.id = id;
-        this.name = name;
+        this.category = category;
         this.products = products;
     }
 
@@ -24,12 +24,12 @@ public class Category {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getCategory() {
+        return category;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setCategory(String category) {
+        this.category = category;
     }
 
     public List<Product> getProducts() {

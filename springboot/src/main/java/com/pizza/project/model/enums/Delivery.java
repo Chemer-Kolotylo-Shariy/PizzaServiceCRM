@@ -5,11 +5,11 @@ public enum Delivery {
     DELIVERY_COURIER(2, "DELIVERY_COURIER");
 
     private int id;
-    private String name;
+    private String delivery;
 
-    Delivery(int id, String name) {
+    Delivery(int id, String delivery) {
         this.id = id;
-        this.name = name;
+        this.delivery = delivery;
     }
 
     public int getId() {
@@ -20,11 +20,11 @@ public enum Delivery {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getDelivery() {
+        return delivery;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setDelivery(String delivery) {
+        this.delivery = delivery;
     }
 }

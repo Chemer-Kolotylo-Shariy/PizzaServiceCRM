@@ -2,11 +2,11 @@ package com.pizza.project.model;
 
 public class Payment {
     private int id;
-    private String name;
+    private String payment;
 
-    public Payment(int id, String name) {
+    public Payment(int id, String payment) {
         this.id = id;
-        this.name = name;
+        this.payment = payment;
     }
 
     public int getId() {
@@ -17,11 +17,11 @@ public class Payment {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getPayment() {
+        return payment;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setPayment(String payment) {
+        this.payment = payment;
     }
 }

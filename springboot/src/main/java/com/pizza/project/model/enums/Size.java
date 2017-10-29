@@ -10,11 +10,11 @@ public enum Size {
     SIZE_05_L(6, "SIZE_05_L");
 
     private Integer id;
-    private String name;
+    private String size;
 
-    Size(Integer id, String name) {
+    Size(Integer id, String size) {
         this.id = id;
-        this.name = name;
+        this.size = size;
     }
 
     public Integer getId() {
@@ -25,11 +25,11 @@ public enum Size {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getSize() {
+        return size;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setSize(String size) {
+        this.size = size;
     }
 }

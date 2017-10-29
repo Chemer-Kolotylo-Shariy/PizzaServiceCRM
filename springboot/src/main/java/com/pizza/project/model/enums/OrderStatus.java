@@ -12,11 +12,11 @@ public enum OrderStatus {
     END(4, "END");
 
     private int id;
-    private String name;
+    private String status;
 
-    OrderStatus(int id, String name) {
+    OrderStatus(int id, String status) {
         this.id = id;
-        this.name = name;
+        this.status = status;
     }
 
     public int getId() {
@@ -27,11 +27,11 @@ public enum OrderStatus {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getStatus() {
+        return status;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setStatus(String status) {
+        this.status = status;
     }
 }

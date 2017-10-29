@@ -27,4 +27,12 @@ public class ClientAddress {
     public void setAddress(Address address) {
         this.address = address;
     }
+
+    @Override
+    public String toString() {
+        return "ClientAddress{" +
+                "client=" + client +
+                ", address=" + address +
+                '}';
+    }
 }
