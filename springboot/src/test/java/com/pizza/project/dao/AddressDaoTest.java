@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.util.List;
+
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class AddressDaoTest {
@@ -20,5 +22,14 @@ public class AddressDaoTest {
         Assert.assertNotNull("Address not found", address);
         System.out.println("I got addres: " + address.getStreet() + " " +
             address.getHouse() + " " + address.getApartament());
+    }
+
+    @Test
+    public void getAddressesByClientIdAndLableNotNull(){
+        List<Address> addresses = addressDao.getAddressesByClientIdAndLableNotNull(1L);
+        Assert.assertNotNull("List not found!", addresses);
+        for (Address c : addresses) {
+            System.out.println(c);
+        }
     }
 }
