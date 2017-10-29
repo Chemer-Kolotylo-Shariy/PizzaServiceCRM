@@ -2,7 +2,10 @@ package com.pizza.project.dao.impl;
 
 import com.pizza.project.dao.AddressDao;
 import com.pizza.project.dao.impl.sql.AddressSQL;
+import com.pizza.project.dao.impl.sql.ClientAddressSQL;
+import com.pizza.project.dao.impl.sql.ClientSQL;
 import com.pizza.project.model.Address;
+import com.pizza.project.model.ClientAddress;
 import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.ResultSetExtractor;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
@@ -37,6 +40,13 @@ public class AddressDaoImpl implements AddressDao {
     }
 
     @Override
+    public List<Address> getAddressesByClientIdAndLableNotNull(Long id) {
+        SqlParameterSource parameter = new MapSqlParameterSource()
+                .addValue(ClientAddressSQL.PARAM_ID_CLIENT, id);
+        return jdbcTemplate.query(AddressSQL.QUERY_GET_ADDRESS_BY_CLIENT_ID_AND_LABLE_NOT_NULL, parameter, addressExtractor);
+    }
+
+    @Override
     public Address get(Long id) {
         SqlParameterSource parameter = new MapSqlParameterSource()
                 .addValue(AddressSQL.PARAM_ID, id);
@@ -67,8 +77,9 @@ public class AddressDaoImpl implements AddressDao {
 
                  address.setId(resultSet.getLong(AddressSQL.PARAM_ID));
                  address.setStreet(resultSet.getString(AddressSQL.PARAM_STREET));
-                 address.setHouse(Integer.parseInt(resultSet.getString(AddressSQL.PARAM_HOUSE)));
-                 address.setApartament(Integer.parseInt(resultSet.getString(AddressSQL.PARAM_APARTAMENT)));
+                 address.setHouse(resultSet.getString(AddressSQL.PARAM_HOUSE));
+                 address.setApartament(Integer.parseInt(resultSet.getString(AddressSQL.PARAM_APARTAMENT) != null ?
+                         resultSet.getString(AddressSQL.PARAM_APARTAMENT) : "0"));
                  address.setLable(resultSet.getString(AddressSQL.PARAM_LABLE));
 
                  addresses.add(address);
