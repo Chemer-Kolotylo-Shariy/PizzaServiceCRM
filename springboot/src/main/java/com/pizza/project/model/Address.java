@@ -6,7 +6,7 @@ public class Address {
 
     private Long id;
     private String street;
-    private int house;
+    private String house;
     private int apartament;
     private String lable;
     private List<Client> clients;
@@ -14,7 +14,7 @@ public class Address {
     public Address() {
     }
 
-    public Address(Long id, String street, int house, int apartament, String lable) {
+    public Address(Long id, String street, String house, int apartament, String lable) {
         this.id = id;
         this.street = street;
         this.house = house;
@@ -38,11 +38,11 @@ public class Address {
         this.street = street;
     }
 
-    public int getHouse() {
+    public String getHouse() {
         return house;
     }
 
-    public void setHouse(int house) {
+    public void setHouse(String house) {
         this.house = house;
     }
 
