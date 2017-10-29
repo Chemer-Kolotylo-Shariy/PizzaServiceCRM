@@ -12,7 +12,7 @@ public class Client {
     private String name;
     private String surname;
     private String email;
-    private String phone;
+    private Long phone;
     private String password;
     private Role role;
     private List<BankCard> bankCards;
@@ -21,7 +21,7 @@ public class Client {
     public Client() {
     }
 
-    public Client(Long id, String name, String surname, String email, String phone, String password, Role role) {
+    public Client(Long id, String name, String surname, String email, Long phone, String password, Role role) {
         this.id = id;
         this.name = name;
         this.surname = surname;
@@ -32,7 +32,7 @@ public class Client {
     }
 
     public Client(Long id, String name, String surname,
-                  String email, String phone, String password,
+                  String email, Long phone, String password,
                   Role role, List<BankCard> bankCards, List<Address> addresses) {
         this.id = id;
         this.name = name;
@@ -77,11 +77,11 @@ public class Client {
         this.email = email;
     }
 
-    public String getPhone() {
+    public Long getPhone() {
         return phone;
     }
 
-    public void setPhone(String phone) {
+    public void setPhone(Long phone) {
         this.phone = phone;
     }
 
