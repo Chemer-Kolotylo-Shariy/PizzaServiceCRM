@@ -31,18 +31,13 @@ public class Client {
         this.role = role;
     }
 
-    public Client(Long id, String name, String surname,
-                  String email, Long phone, String password,
-                  Role role, List<BankCard> bankCards, List<Address> addresses) {
-        this.id = id;
+    public Client(String name, String surname, String email, Long phone, String password, Role role) {
         this.name = name;
         this.surname = surname;
         this.email = email;
         this.phone = phone;
         this.password = password;
         this.role = role;
-        this.bankCards = bankCards;
-        this.addresses = addresses;
     }
 
     public Long getId() {

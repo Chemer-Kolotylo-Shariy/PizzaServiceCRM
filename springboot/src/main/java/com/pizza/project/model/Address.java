@@ -22,6 +22,13 @@ public class Address {
         this.lable = lable;
     }
 
+    public Address(String street, String house, int apartament, String lable) {
+        this.street = street;
+        this.house = house;
+        this.apartament = apartament;
+        this.lable = lable;
+    }
+
     public Long getId() {
         return id;
     }
