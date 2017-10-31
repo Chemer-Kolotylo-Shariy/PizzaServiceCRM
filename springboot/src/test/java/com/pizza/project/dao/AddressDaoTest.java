@@ -32,4 +32,11 @@ public class AddressDaoTest {
             System.out.println(c);
         }
     }
+
+    @Test
+    public void create(){
+        Long id = addressDao.create(new Address("dobrzanskiego", "35", 320, null));
+        Assert.assertNotNull("Address have not created!", id);
+        System.out.println("Address with id: " + id + " was created!");
+    }
 }

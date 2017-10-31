@@ -25,4 +25,11 @@ public class ClientAddressDaoTest {
             System.out.println(c);
         }
     }
+
+    @Test
+    public void deleteById(){
+        Long id = clientAddressDao.removeByClientId(2L);
+        Assert.assertNotNull("Client not found", id);
+        System.out.println("I deleted Client_address with id_client " + id);
+    }
 }

@@ -1,6 +1,7 @@
 package com.pizza.project.dao;
 
 import com.pizza.project.model.Client;
+import com.pizza.project.model.enums.Role;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -29,6 +30,20 @@ public class ClientDaoTest {
         Client client = clientDao.getByPhone(48537778445L);
         Assert.assertNotNull("User not found", client);
         System.out.println("I got user " + client.getName());
+    }
+
+    @Test
+    public void deleteById(){
+        Long id = clientDao.remove(2L);
+        Assert.assertNotNull("Client not found", id);
+        System.out.println("I deleted Client with id " + id);
+    }
+
+    @Test
+    public void createClient() {
+        id = clientDao.create(new Client( "Vika", "Knyr", "anton@gmail.com", (long)570637376, "11111",   Role.ROLE_KLIENT));
+        Assert.assertNotNull("Client not created", id);
+        System.out.println("Client with id " + id + " created");
     }
 
     @Test
