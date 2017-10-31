@@ -10,6 +10,7 @@ public class ClientAddressSQL {
     public static final String QUERY_GET_ALL = "SELECT id_client, id_address " +
             "FROM client_address " +
             "ORDER BY id_client DESC; ";
+    public static final String QUERY_DELETE_BY_ID_CLIENT = "DELETE FROM client_address WHERE id_client = :id_client;";
 
 
 

@@ -29,4 +29,6 @@ public final class ClientSQL {
             "ON c.id_role = r.id " +
             "WHERE phone = :phone;";
 
+    public static final String QUERY_DELETE_BY_ID = "DELETE FROM client WHERE id = :id";
+
 }
