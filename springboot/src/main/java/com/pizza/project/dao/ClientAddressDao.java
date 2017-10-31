@@ -6,4 +6,5 @@ import java.util.List;
 
 public interface ClientAddressDao extends CrudDao<ClientAddress> {
     List<ClientAddress> getAll();
+    Long removeByClientId(Long id);
 }
