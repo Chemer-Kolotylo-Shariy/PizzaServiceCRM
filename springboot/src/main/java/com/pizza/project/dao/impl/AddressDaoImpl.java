@@ -55,7 +55,17 @@ public class AddressDaoImpl implements AddressDao {
 
     @Override
     public Long create(Address object) {
-        return null;
+        if(object.getId() != null){
+            return null;
+        }
+        SqlParameterSource parameter = new MapSqlParameterSource()
+                .addValue(AddressSQL.PARAM_STREET, object.getStreet())
+                .addValue(AddressSQL.PARAM_HOUSE, object.getHouse())
+                .addValue(AddressSQL.PARAM_APARTAMENT, object.getApartament())
+                .addValue(AddressSQL.PARAM_LABLE, object.getLable());
+        Long id = simpleJdbcInsert.executeAndReturnKey(parameter).longValue();
+        object.setId(id);
+        return id;
     }
 
     @Override

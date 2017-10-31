@@ -4,11 +4,14 @@ import com.pizza.project.dao.AddressDao;
 import com.pizza.project.dao.ClientAddressDao;
 import com.pizza.project.dao.ClientDao;
 import com.pizza.project.dao.impl.sql.ClientAddressSQL;
+import com.pizza.project.dao.impl.sql.ClientSQL;
 import com.pizza.project.model.ClientAddress;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.ResultSetExtractor;
+import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
+import org.springframework.jdbc.core.namedparam.SqlParameterSource;
 import org.springframework.jdbc.core.simple.SimpleJdbcInsert;
 import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
@@ -35,6 +38,17 @@ public class ClientAddressImpl implements ClientAddressDao {
     @Override
     public List<ClientAddress> getAll() {
         return jdbcTemplate.query(ClientAddressSQL.QUERY_GET_ALL, clientAddressExtractor);
+    }
+
+    @Override
+    public Long removeByClientId(Long id) {
+        SqlParameterSource parameter = new MapSqlParameterSource()
+                .addValue(ClientAddressSQL.PARAM_ID_CLIENT, id);
+        int rows = jdbcTemplate.update(ClientAddressSQL.QUERY_DELETE_BY_ID_CLIENT, parameter);
+        if (rows > 0){
+            return id;
+        }
+        return id;
     }
 
     @Override
