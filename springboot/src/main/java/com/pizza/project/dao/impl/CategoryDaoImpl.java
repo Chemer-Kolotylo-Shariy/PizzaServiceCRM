@@ -69,6 +69,16 @@ public class CategoryDaoImpl implements CategoryDao {
         return id;
     }
 
+    @Override
+    public Category getCategory(Integer id) {
+        if (id == null){
+            return null;
+        }
+        SqlParameterSource parameter = new MapSqlParameterSource()
+                .addValue(CategorySQL.PARAM_ID, id);
+        return jdbcTemplate.query(CategorySQL.QUERY_GET_BY_ID, parameter, categoryExtractor).stream().findFirst().orElse(null);
+    }
+
     private class CategoryExtractor implements ResultSetExtractor<List<Category>> {
 
         @Override
