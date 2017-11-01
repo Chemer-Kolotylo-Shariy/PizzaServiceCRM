@@ -6,17 +6,29 @@ public class Product {
     private Long id;
     private String name;
     private String specification;
-    private int amount;
+    private Integer amount;
     private String foto;
-    private double price;
-    private int persent;
+    private Double price;
+    private Integer persent;
     private Category category;
     private Size size;
+    private Double priceWithPersent;
 
     public Product(Long id, String name, String specification,
-                   int amount, String foto, double price, int persent,
+                   Integer amount, String foto, Double price, Integer persent,
                    Category category, Size size) {
         this.id = id;
+        this.name = name;
+        this.specification = specification;
+        this.amount = amount;
+        this.foto = foto;
+        this.price = price;
+        this.persent = persent;
+        this.category = category;
+        this.size = size;
+    }
+
+    public Product(String name, String specification, Integer amount, String foto, Double price, Integer persent, Category category, Size size) {
         this.name = name;
         this.specification = specification;
         this.amount = amount;
@@ -51,11 +63,11 @@ public class Product {
         this.specification = specification;
     }
 
-    public int getAmount() {
+    public Integer getAmount() {
         return amount;
     }
 
-    public void setAmount(int amount) {
+    public void setAmount(Integer amount) {
         this.amount = amount;
     }
 
@@ -67,11 +79,11 @@ public class Product {
         this.foto = foto;
     }
 
-    public double getPrice() {
+    public Double getPrice() {
         return price;
     }
 
-    public void setPrice(double price) {
+    public void setPrice(Double price) {
         this.price = price;
     }
 
@@ -97,5 +109,13 @@ public class Product {
 
     public void setSize(Size size) {
         this.size = size;
+    }
+
+    public Double getPriceWithPersent() {
+        if (persent != null){
+            return (((double)persent) / 100) * price;
+        } else {
+            return price;
+        }
     }
 }
