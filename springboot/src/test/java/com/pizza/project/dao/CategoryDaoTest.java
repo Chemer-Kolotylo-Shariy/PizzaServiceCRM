@@ -24,6 +24,13 @@ public class CategoryDaoTest {
     }
 
     @Test
+    public void getCategory(){
+        Category category = categoryDao.getCategory(2);
+        Assert.assertNotNull("Categoru not found!", category);
+        System.out.println("Category: " + category.getCategory());
+    }
+
+    @Test
     public void getAll(){
         List<Category> categoryList = categoryDao.getAllCategories();
         Assert.assertNotNull("Category not found!", categoryList);
