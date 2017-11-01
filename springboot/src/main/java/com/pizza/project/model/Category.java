@@ -3,24 +3,33 @@ package com.pizza.project.model;
 import java.util.List;
 
 public class Category {
-    private int id;
+    private Integer id;
     private String category;
     private List<Product>products;
 
     public Category() {
     }
 
-    public Category(int id, String category, List<Product> products) {
+    public Category(Integer id, String category, List<Product> products) {
         this.id = id;
         this.category = category;
         this.products = products;
     }
 
-    public int getId() {
+    public Category(Integer id, String category) {
+        this.id = id;
+        this.category = category;
+    }
+
+    public Category(String category) {
+        this.category = category;
+    }
+
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
