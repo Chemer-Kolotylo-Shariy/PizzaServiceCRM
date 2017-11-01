@@ -22,6 +22,19 @@ public class BankCard {
         this.client = client;
     }
 
+    public BankCard(Long number, int date, int secret_code, Client client) {
+        this.number = number;
+        this.date = date;
+        this.secret_code = secret_code;
+        this.client = client;
+    }
+
+    public BankCard(Long number, int date, int secret_code) {
+        this.number = number;
+        this.date = date;
+        this.secret_code = secret_code;
+    }
+
     public Long getId() {
         return id;
     }
