@@ -7,32 +7,35 @@ public class Product {
     private String name;
     private String specification;
     private Integer amount;
-    private String foto;
+    private String photo;
     private Double price;
     private Integer persent;
     private Category category;
     private Size size;
     private Double priceWithPersent;
 
+    public Product() {
+    }
+
     public Product(Long id, String name, String specification,
-                   Integer amount, String foto, Double price, Integer persent,
+                   Integer amount, String photo, Double price, Integer persent,
                    Category category, Size size) {
         this.id = id;
         this.name = name;
         this.specification = specification;
         this.amount = amount;
-        this.foto = foto;
+        this.photo = photo;
         this.price = price;
         this.persent = persent;
         this.category = category;
         this.size = size;
     }
 
-    public Product(String name, String specification, Integer amount, String foto, Double price, Integer persent, Category category, Size size) {
+    public Product(String name, String specification, Integer amount, String photo, Double price, Integer persent, Category category, Size size) {
         this.name = name;
         this.specification = specification;
         this.amount = amount;
-        this.foto = foto;
+        this.photo = photo;
         this.price = price;
         this.persent = persent;
         this.category = category;
@@ -71,12 +74,12 @@ public class Product {
         this.amount = amount;
     }
 
-    public String getFoto() {
-        return foto;
+    public String getPhoto() {
+        return photo;
     }
 
-    public void setFoto(String foto) {
-        this.foto = foto;
+    public void setPhoto(String foto) {
+        this.photo = foto;
     }
 
     public Double getPrice() {
@@ -112,7 +115,7 @@ public class Product {
     }
 
     public Double getPriceWithPersent() {
-        if (persent != null){
+        if (persent != 0){
             return (((double)persent) / 100) * price;
         } else {
             return price;
