@@ -28,6 +28,7 @@ public class ClientAddressImpl implements ClientAddressDao {
     private NamedParameterJdbcTemplate jdbcTemplate;
     private ClientAddressExtractor clientAddressExtractor;
 
+    @Autowired
     public ClientAddressImpl(DataSource dataSource, ClientDao clientDao, AddressDao addressDao) {
         simpleJdbcInsert = new SimpleJdbcInsert(dataSource)
                 .withTableName(ClientAddressSQL.PARAM_TABLE);

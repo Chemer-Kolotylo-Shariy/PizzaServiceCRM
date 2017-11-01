@@ -6,6 +6,7 @@ import com.pizza.project.dao.impl.sql.ClientAddressSQL;
 import com.pizza.project.dao.impl.sql.ClientSQL;
 import com.pizza.project.model.Address;
 import com.pizza.project.model.ClientAddress;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.ResultSetExtractor;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
@@ -26,6 +27,7 @@ public class AddressDaoImpl implements AddressDao {
     private NamedParameterJdbcTemplate jdbcTemplate;
     private AddressExtractor addressExtractor;
 
+    @Autowired
     public AddressDaoImpl(DataSource dataSource) {
         simpleJdbcInsert = new SimpleJdbcInsert(dataSource)
                 .withTableName(AddressSQL.PARAM_TABLE)
