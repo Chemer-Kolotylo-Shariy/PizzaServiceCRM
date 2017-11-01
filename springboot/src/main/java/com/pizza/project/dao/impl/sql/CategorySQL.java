@@ -7,4 +7,5 @@ public class CategorySQL {
 
     public static final String QUERY_GET_ALL_CATEGORY = "SELECT * FROM category;";
 
+    public static final String QUERY_GET_BY_ID = "SELECT * FROM category WHERE id = :id;";
 }
