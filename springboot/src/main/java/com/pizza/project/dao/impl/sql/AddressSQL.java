@@ -19,4 +19,8 @@ public class AddressSQL {
             "ON a.id = c.id_address " +
             "WHERE lable IS NOT NULL AND c.id_client = :id_client";
 
+    public static final String QUERY_UPDATE = "UPDATE address " +
+            "lable = :lable " +
+            "WHERE id = :id;";
+
 }

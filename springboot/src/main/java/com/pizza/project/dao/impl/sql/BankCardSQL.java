@@ -10,5 +10,7 @@ public class BankCardSQL {
 
     public static final String QUERY_GET_ALL = "SELECT * FROM bank_card;";
 
+    public static final String QUERY_DELETE = "DELETE FROM bank_card WHERE id = :id;";
+
     public static final String QUERY_GET_BY_ID_CLIENT = "SELECT * FROM bank_card WHERE id_client = :id_client;";
 }

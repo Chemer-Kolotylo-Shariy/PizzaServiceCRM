@@ -1,6 +1,6 @@
 package com.pizza.project.dao.impl.sql;
 
-public final class ClientSQL {
+public class ClientSQL {
     public static final String PARAM_TABLE = "client";
     public static final String PARAM_ID = "id";
     public static final String PARAM_NAME = "name";
@@ -30,5 +30,13 @@ public final class ClientSQL {
             "WHERE phone = :phone;";
 
     public static final String QUERY_DELETE_BY_ID = "DELETE FROM client WHERE id = :id";
+
+    public static final String QUERY_UPDATE = "UPDATE client " +
+            "name = :name, " +
+            "surname = :surname, " +
+            "email = :email, " +
+            "phone = :phone, " +
+            "password = :password " +
+            "WHERE id = :id;";
 
 }
