@@ -1,19 +1,26 @@
 package com.pizza.project.model;
 
 public class Payment {
-    private int id;
+    private Integer id;
     private String payment;
 
-    public Payment(int id, String payment) {
+    public Payment() {
+    }
+
+    public Payment(String payment) {
+        this.payment = payment;
+    }
+
+    public Payment(Integer id, String payment) {
         this.id = id;
         this.payment = payment;
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

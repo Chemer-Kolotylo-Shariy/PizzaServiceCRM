@@ -6,10 +6,11 @@ package com.pizza.project.model.enums;
  * END - Client received an order
  * */
 public enum OrderStatus {
-    ADMIN_CONFIR(1, "ADMIN_CONFIR"),
+    ADMIN_CONFIR(1, "ADMIN_CONFIR"), // confirmation - подтверждение
     CHEF_CONFIR(2, "CHEF_CONFIR"),
     COURIER_CONFIR(3, "COURIER_CONFIR"),
-    END(4, "END");
+    END(4, "END"),
+    CLIENT_CONFIR(5, "CLIENT_CONFIR");
 
     private int id;
     private String status;

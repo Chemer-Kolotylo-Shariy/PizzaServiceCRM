@@ -5,20 +5,31 @@ import com.pizza.project.model.enums.OrderStatus;
 
 public class Order {
     private Long id;
-    private String date;
-    private String time;
-    private double price;
+    private Double price;
     private OrderStatus orderStatus;
     private Payment payment;
     private Delivery delivery;
     private Client client;
     private Address address;
+    private String date;
+    private String time;
 
     public Order() {
     }
 
+    public Order(String date, String time, Double price, OrderStatus orderStatus, Payment payment, Delivery delivery, Client client, Address address) {
+        this.date = date;
+        this.time = time;
+        this.price = price;
+        this.orderStatus = orderStatus;
+        this.payment = payment;
+        this.delivery = delivery;
+        this.client = client;
+        this.address = address;
+    }
+
     public Order(Long id, String date, String time,
-                 double price, OrderStatus orderStatus,
+                 Double price, OrderStatus orderStatus,
                  Payment payment, Delivery delivery,
                  Client client, Address address) {
         this.id = id;
@@ -56,11 +67,11 @@ public class Order {
         this.time = time;
     }
 
-    public double getPrice() {
+    public Double getPrice() {
         return price;
     }
 
-    public void setPrice(double price) {
+    public void setPrice(Double price) {
         this.price = price;
     }
 
