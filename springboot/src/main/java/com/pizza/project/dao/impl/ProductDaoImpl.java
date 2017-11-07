@@ -39,6 +39,11 @@ public class ProductDaoImpl implements ProductDao{
     }
 
     @Override
+    public List<Product> getProductsByCategoryAndAmountNotNull(String category) {
+        return jdbcTemplate.query(ProductSQL.QUERY_GET_CATEGORY_AND_AMOUNT_NOT_NULL, productExtractor);
+    }
+
+    @Override
     public Product get(Long id) {
         if (id == null){
             return null;
@@ -69,6 +74,20 @@ public class ProductDaoImpl implements ProductDao{
 
     @Override
     public Long update(Product object) {
+        SqlParameterSource parameter = new MapSqlParameterSource()
+                .addValue(ProductSQL.PARAM_ID, object.getId())
+                .addValue(ProductSQL.PARAM_NAME, object.getName())
+                .addValue(ProductSQL.PARAM_SPECIFICATION, object.getSpecification())
+                .addValue(ProductSQL.PARAM_AMOUNT, object.getAmount())
+                .addValue(ProductSQL.PARAM_PHOTO, object.getPhoto())
+                .addValue(ProductSQL.PARAM_PRICE, object.getPrice())
+                .addValue(ProductSQL.PARAM_ID_CATEGORY, object.getCategory().getId())
+                .addValue(ProductSQL.PARAM_ID_SIZE, object.getSize().getId());
+
+        Long row = (long) jdbcTemplate.update(ProductSQL.QUERY_UPDATE, parameter);
+        if (row > 0){
+            return row;
+        }
         return null;
     }
 

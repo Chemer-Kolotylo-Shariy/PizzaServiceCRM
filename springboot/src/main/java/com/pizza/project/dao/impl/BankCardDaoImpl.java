@@ -64,6 +64,12 @@ public class BankCardDaoImpl implements BankCardDao {
 
     @Override
     public Long remove(Long id) {
+        SqlParameterSource parameter = new MapSqlParameterSource()
+                .addValue(BankCardSQL.PARAM_ID, id);
+        int row = jdbcTemplate.update(BankCardSQL.QUERY_DELETE, parameter);
+        if (row > 0){
+            return id;
+        }
         return null;
     }
 

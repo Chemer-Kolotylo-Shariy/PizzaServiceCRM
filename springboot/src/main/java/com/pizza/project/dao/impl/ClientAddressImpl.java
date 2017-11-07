@@ -4,7 +4,6 @@ import com.pizza.project.dao.AddressDao;
 import com.pizza.project.dao.ClientAddressDao;
 import com.pizza.project.dao.ClientDao;
 import com.pizza.project.dao.impl.sql.ClientAddressSQL;
-import com.pizza.project.dao.impl.sql.ClientSQL;
 import com.pizza.project.model.ClientAddress;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
@@ -14,7 +13,6 @@ import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.jdbc.core.namedparam.SqlParameterSource;
 import org.springframework.jdbc.core.simple.SimpleJdbcInsert;
 import org.springframework.stereotype.Repository;
-import org.springframework.stereotype.Service;
 
 import javax.sql.DataSource;
 import java.sql.ResultSet;

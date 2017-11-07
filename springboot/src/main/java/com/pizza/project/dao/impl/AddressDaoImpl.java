@@ -3,9 +3,7 @@ package com.pizza.project.dao.impl;
 import com.pizza.project.dao.AddressDao;
 import com.pizza.project.dao.impl.sql.AddressSQL;
 import com.pizza.project.dao.impl.sql.ClientAddressSQL;
-import com.pizza.project.dao.impl.sql.ClientSQL;
 import com.pizza.project.model.Address;
-import com.pizza.project.model.ClientAddress;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.ResultSetExtractor;
@@ -72,6 +70,13 @@ public class AddressDaoImpl implements AddressDao {
 
     @Override
     public Long update(Address object) {
+        SqlParameterSource parameter = new MapSqlParameterSource()
+                .addValue(AddressSQL.PARAM_ID, object.getId())
+                .addValue(AddressSQL.PARAM_LABLE, object.getLable());
+        Long row = (long) jdbcTemplate.update(AddressSQL.QUERY_UPDATE, parameter);
+        if (row > 0){
+            return row;
+        }
         return null;
     }
 
