@@ -47,11 +47,23 @@ public class ClientDaoTest {
     }
 
     @Test
+    public void createClientWithoutPassword() {
+        id = clientDao.create(new Client( "Vika", "Knyr", "a@gmail.com", (long)570637371, null,   Role.ROLE_KLIENT));
+        Assert.assertNotNull("Client not created", id);
+        System.out.println("Client with id " + id + " created");
+    }
+
+    @Test
     public void getAll(){
         List<Client> clients = clientDao.getAllClients();
         Assert.assertNotNull("User not found", clients);
         for (Client c:clients) {
             System.out.println("I got user " + c.getName());
         }
+    }
+
+    @Test
+    public void update(){
+
     }
 }

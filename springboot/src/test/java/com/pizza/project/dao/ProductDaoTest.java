@@ -10,6 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.util.List;
+
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class ProductDaoTest {
@@ -21,7 +23,7 @@ public class ProductDaoTest {
 
     @Test
     public void create(){
-        Long id = productDao.create(new Product("coca-cola","napoj gazowany bez cukru", 10, "F://foto", 4.50, null, categoryDao.getCategory(1), Size.SIZE_1_L));
+        Long id = productDao.create(new Product("GYROS","sos, podwójny ser, gyros, cebula, kukurydza, pomidorki cherry, rukola", 100, "photo", 12.0, null, categoryDao.getCategory(1), Size.SIZE_L));
         Assert.assertNotNull("Product not created!", id);
         System.out.println("Product was created: " + id);
     }
@@ -31,5 +33,12 @@ public class ProductDaoTest {
         Product product = productDao.get(1L);
         Assert.assertNotNull("Product not found!", product);
         System.out.println("Product : " + product.getName() + " Price: " + product.getPriceWithPersent() );
+    }
+
+    @Test
+    public void getListProductCountNotNull(){
+        List<Product> products = productDao.getProductsByCategoryAndAmountNotNull("PIZZA");
+        Assert.assertNotNull("Products not found!", products);
+        System.out.println("List has: " + products.size() + " products");
     }
 }
