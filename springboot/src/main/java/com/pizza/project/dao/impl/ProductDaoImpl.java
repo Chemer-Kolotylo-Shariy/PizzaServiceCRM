@@ -40,7 +40,14 @@ public class ProductDaoImpl implements ProductDao{
 
     @Override
     public List<Product> getProductsByCategoryAndAmountNotNull(String category) {
-        return jdbcTemplate.query(ProductSQL.QUERY_GET_CATEGORY_AND_AMOUNT_NOT_NULL, productExtractor);
+        if (category == null){
+            return null;
+        }
+        List<Product> products;
+        SqlParameterSource parameters = new MapSqlParameterSource()
+                .addValue(ProductSQL.PARAM_CATEGORY ,category);
+        products = jdbcTemplate.query(ProductSQL.QUERY_GET_CATEGORY_AND_AMOUNT_NOT_NULL, parameters, productExtractor);
+        return products;
     }
 
     @Override

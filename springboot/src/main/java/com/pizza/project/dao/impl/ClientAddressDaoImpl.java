@@ -21,13 +21,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Repository
-public class ClientAddressImpl implements ClientAddressDao {
+public class ClientAddressDaoImpl implements ClientAddressDao {
     private SimpleJdbcInsert simpleJdbcInsert;
     private NamedParameterJdbcTemplate jdbcTemplate;
     private ClientAddressExtractor clientAddressExtractor;
 
     @Autowired
-    public ClientAddressImpl(DataSource dataSource, ClientDao clientDao, AddressDao addressDao) {
+    public ClientAddressDaoImpl(DataSource dataSource, ClientDao clientDao, AddressDao addressDao) {
         simpleJdbcInsert = new SimpleJdbcInsert(dataSource)
                 .withTableName(ClientAddressSQL.PARAM_TABLE);
         jdbcTemplate = new NamedParameterJdbcTemplate(dataSource);

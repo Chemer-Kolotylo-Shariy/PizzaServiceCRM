@@ -38,7 +38,7 @@ public class ClientDaoImpl implements ClientDao {
         jdbcTemplate = new NamedParameterJdbcTemplate(dataSource);
         clientExtractor = new ClientExtractor();
         addressDao = new AddressDaoImpl(dataSource);
-        clientAddressDao = new ClientAddressImpl(dataSource, this, addressDao);
+        clientAddressDao = new ClientAddressDaoImpl(dataSource, this, addressDao);
     }
 
     @Override

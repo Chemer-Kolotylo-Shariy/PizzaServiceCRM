@@ -12,6 +12,7 @@ public class ProductSQL {
     public static final String PARAM_ID_CATEGORY = "id_category";
     public static final String PARAM_ID_SIZE = "id_size";
     public static final String PARAM_SIZE = "size";
+    public static final String PARAM_CATEGORY = "category";
 
     public static final String QUERY_GET_ALL_BY_CATEGORY = "SELECT * FROM product " +
                                         "WHERE id_category = :id_category;";
@@ -26,7 +27,7 @@ public class ProductSQL {
             "WHERE p.id = :id;";
 
     public static final String QUERY_GET_CATEGORY_AND_AMOUNT_NOT_NULL = "SELECT p.id, p.name, p.specification, " +
-            "p.amount, p.photo, p.price, p.persent, p.id_category, p.id_size " +
+            "p.amount, p.photo, p.price, p.persent, p.id_category, c.category, p.id_size, s.size " +
             "FROM product p " +
             "INNER JOIN size s " +
             "ON p.id_size = s.id " +
