@@ -97,6 +97,13 @@ public class OrderDaoImpl implements OrderDao {
         return null;
     }
 
+    @Override
+    public List<Order> getByStatus(String status) {
+        SqlParameterSource parameter = new MapSqlParameterSource(OrderSQL.PARAM_ORDER_STATUS, status);
+        return jdbcTemplate.query(OrderSQL.QUERY_GET_ALL_BY_STATUS, parameter, orderExtractor
+        );
+    }
+
     private class OrderExtractor implements ResultSetExtractor<List<Order>>{
         private PaymentDao paymentDao;
         private ClientDao clientDao;

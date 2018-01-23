@@ -18,9 +18,9 @@ public class CategoryDaoTest {
 
     @Test
     public void create(){
-        Integer id = categoryDao.createCategory(new Category("NAPOJ"));
+        Integer id = categoryDao.createCategory(new Category("Deserty"));
         Assert.assertNotNull("Category haven`t been created! ", id);
-        System.out.println("Category was created " + 1);
+        System.out.println("Category was created " + id);
     }
 
     @Test

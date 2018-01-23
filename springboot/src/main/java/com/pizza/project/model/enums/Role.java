@@ -3,7 +3,7 @@ package com.pizza.project.model.enums;
 public enum Role {
     ROLE_KLIENT(1, "ROLE_KLIENT"),
     ROLE_MANAGER(2, "ROLE_MANAGER"),
-    ROLE_ADMINISTRATOR(3, "ROLE_ADMINISTRATOR"),
+    ROLE_ADMIN(3, "ROLE_ADMIN"),
     ROLE_CHEF(4, "ROLE_CHEF"),
     ROLE_COURIER(5, "ROLE_COURIER");
 

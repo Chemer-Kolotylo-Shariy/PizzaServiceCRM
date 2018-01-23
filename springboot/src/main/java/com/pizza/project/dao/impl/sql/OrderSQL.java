@@ -29,6 +29,22 @@ public class OrderSQL {
             "ON o.id_address = a.id " +
             "WHERE o.id = :id;";
 
+    public static final String QUERY_GET_ALL_BY_STATUS = "SELECT o.id, o.price, s.status, " +
+            "o.id_payment, d.delivery, o.id_client, o.id_address, o.date, o.time " +
+            "FROM \"order\" o " +
+            "INNER JOIN order_status s " +
+            "ON o.id_order_status = s.id " +
+            "INNER JOIN payment p " +
+            "ON o.id_payment = p.id " +
+            "INNER JOIN delivery d " +
+            "ON o.id_delivery = d.id " +
+            "INNER JOIN client c " +
+            "ON o.id_client = c.id " +
+            "INNER JOIN address a " +
+            "ON o.id_address = a.id " +
+            "WHERE s.status = :status;";
+
+
     public static final String QUERY_UPDATE = "UPDATE \"order\" " +
             "price = :price, " +
             "id_order_status = :id_order_status, " +

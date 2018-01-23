@@ -10,13 +10,17 @@
 <head>
     <title>Hello PIZZA</title>
     <link href="https://fonts.googleapis.com/css?family=Encode+Sans" rel="stylesheet">
+
+    <style>
+        <%@include file="/static/js/parser.js"%>
+    </style>
 </head>
 <body>
 
     <main>
         <nav>
             <a href="/pizza">PIZZA</a>
-            <a href="#">clients</a>
+            <a href="/products">PRODUCTS</a>  <!-- onclick="fetch_json()" -->
             <a href="#">philosohpy</a>
             <a href="#">contact</a>
         </nav>
