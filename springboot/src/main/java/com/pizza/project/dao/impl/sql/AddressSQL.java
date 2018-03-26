@@ -23,4 +23,9 @@ public class AddressSQL {
             "lable = :lable " +
             "WHERE id = :id;";
 
+    public static final String QUERY_GET_ADDRESS_LABEL_NULL = "" +
+            "SELECT * " +
+            "FROM address " +
+            "WHERE street = :street AND house = :house AND apartament = :apartament;";
+
 }

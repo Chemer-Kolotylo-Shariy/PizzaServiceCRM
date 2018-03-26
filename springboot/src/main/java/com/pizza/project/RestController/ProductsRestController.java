@@ -13,10 +13,14 @@ import java.util.List;
 @RequestMapping(value = "/products")
 public class ProductsRestController {
 
-    @Autowired
-    private ProductServise productServise;
+    private final ProductServise productServise;
 
-//    @RequestMapping(value = "/{}" ,method = RequestMethod.GET)
+    @Autowired
+    public ProductsRestController(ProductServise productServise) {
+        this.productServise = productServise;
+    }
+
+    //    @RequestMapping(value = "/{}" ,method = RequestMethod.GET)
 //    public ResponseEntity<List<Product>> getAllPizza(){
 //        List<Product> products = productServise.getProductByCategory("PIZZA");
 //

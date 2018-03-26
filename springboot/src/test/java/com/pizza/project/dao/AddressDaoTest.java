@@ -25,6 +25,14 @@ public class AddressDaoTest {
     }
 
     @Test
+    public void getByParam(){
+        Address address = addressDao.get("asd", "asd", 12);
+        Assert.assertNotNull("Address not found", address);
+        System.out.println("I got addres: " + address.getStreet() + " " +
+            address.getHouse() + " " + address.getApartament());
+    }
+
+    @Test
     public void getAddressesByClientIdAndLableNotNull(){
         List<Address> addresses = addressDao.getAddressesByClientIdAndLableNotNull(1L);
         Assert.assertNotNull("List not found!", addresses);

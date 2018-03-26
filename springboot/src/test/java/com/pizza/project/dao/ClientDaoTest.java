@@ -42,6 +42,7 @@ public class ClientDaoTest {
 
     @Test
     public void createClient() {
+//        id = clientDao.create(new Client( "Andrii", "Chemer", "ichemer@icloud.com", (long)570637376, "111111",   Role.ROLE_ADMIN));
         id = clientDao.create(new Client( "Andrii", "Chemer", "ichemer@icloud.com", (long)570637376, "111111",   Role.ROLE_ADMIN));
         Assert.assertNotNull("Client not created", id);
         System.out.println("Client with id " + id + " created");
@@ -49,7 +50,7 @@ public class ClientDaoTest {
 
     @Test
     public void createClientWithoutPassword() {
-        id = clientDao.create(new Client( "Vika", "Knyr", "a@gmail.com", (long)570637371, null,   Role.ROLE_KLIENT));
+        id = clientDao.create(new Client( "Vika", null, null, (long)570637376, null,   Role.ROLE_KLIENT));
         Assert.assertNotNull("Client not created", id);
         System.out.println("Client with id " + id + " created");
     }

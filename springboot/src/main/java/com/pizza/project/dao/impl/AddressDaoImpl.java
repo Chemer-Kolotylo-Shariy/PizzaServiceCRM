@@ -47,6 +47,15 @@ public class AddressDaoImpl implements AddressDao {
     }
 
     @Override
+    public Address get(String street, String house, int numb) {
+        SqlParameterSource parameter = new MapSqlParameterSource()
+                .addValue(AddressSQL.PARAM_STREET, street)
+                .addValue(AddressSQL.PARAM_HOUSE, house)
+                .addValue(AddressSQL.PARAM_APARTAMENT, numb);
+        return jdbcTemplate.query(AddressSQL.QUERY_GET_ADDRESS_LABEL_NULL, parameter, addressExtractor).stream().findFirst().orElse(null);
+    }
+
+    @Override
     public Address get(Long id) {
         SqlParameterSource parameter = new MapSqlParameterSource()
                 .addValue(AddressSQL.PARAM_ID, id);
