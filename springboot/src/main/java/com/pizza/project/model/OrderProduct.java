@@ -9,9 +9,10 @@ public class OrderProduct {
     public OrderProduct() {
     }
 
-    public OrderProduct(Order order, Product product) {
+    public OrderProduct(Order order, Product product, Integer amount) {
         this.order = order;
         this.product = product;
+        this.countProduct = amount;
     }
 
     public Order getOrder() {

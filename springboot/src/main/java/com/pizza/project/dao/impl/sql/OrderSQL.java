@@ -15,7 +15,7 @@ public class OrderSQL {
     public static final String PARAM_DELIVERY = "delivery";
 
     public static final String QUERY_GET_BY_ID = "SELECT o.id, o.price, s.status, " +
-            "o.id_payment, d.delivery, o.id_client, o.id_address, o.date, o.time " +
+            "o.id_payment, d.delivery, o.id_client, o.id_address, o.date, o.time, o.id_delivery " +
             "FROM \"order\" o " +
             "INNER JOIN order_status s " +
             "ON o.id_order_status = s.id " +
@@ -30,7 +30,7 @@ public class OrderSQL {
             "WHERE o.id = :id;";
 
     public static final String QUERY_GET_ALL_BY_STATUS = "SELECT o.id, o.price, s.status, " +
-            "o.id_payment, d.delivery, o.id_client, o.id_address, o.date, o.time " +
+            "o.id_payment, d.delivery, o.id_client, o.id_address, o.date, o.time, o.id_delivery " +
             "FROM \"order\" o " +
             "INNER JOIN order_status s " +
             "ON o.id_order_status = s.id " +
@@ -43,6 +43,8 @@ public class OrderSQL {
             "INNER JOIN address a " +
             "ON o.id_address = a.id " +
             "WHERE s.status = :status;";
+
+    public static final String QUERY_UPDATE_BY_ID = "UPDATE \"order\" SET id_order_status = :id_order_status WHERE id = :id";
 
 
     public static final String QUERY_UPDATE = "UPDATE \"order\" " +

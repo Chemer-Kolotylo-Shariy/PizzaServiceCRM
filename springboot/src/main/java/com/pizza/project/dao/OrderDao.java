@@ -7,6 +7,6 @@ import java.util.List;
 public interface OrderDao extends CrudDao<Order> {
     Long removeByIdAndStatusClient(Long id);
     Long removeByIdAndStatusADMIN(Long id);
-    Long changeStatus(Order order, String status);
+    Long changeStatus(Integer id, Integer status);
     List<Order> getByStatus(String status);
 }

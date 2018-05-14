@@ -28,7 +28,7 @@ public class ClientDaoTest {
     @Test
     public void getByPhone(){
         Long number = 537778445L;
-        Client client = clientDao.getByPhone(537778445L);
+        Client client = clientDao.getByPhone(22222222L);
         Assert.assertNotNull("User not found", client);
         System.out.println("I got user " + client.getName());
     }
@@ -43,7 +43,7 @@ public class ClientDaoTest {
     @Test
     public void createClient() {
 //        id = clientDao.create(new Client( "Andrii", "Chemer", "ichemer@icloud.com", (long)570637376, "111111",   Role.ROLE_ADMIN));
-        id = clientDao.create(new Client( "Andrii", "Chemer", "ichemer@icloud.com", (long)570637376, "111111",   Role.ROLE_ADMIN));
+        id = clientDao.create(new Client( "Andrii", "Chemer", "test@test.com", (long)22222222, "22222222",   Role.ROLE_CHEF));
         Assert.assertNotNull("Client not created", id);
         System.out.println("Client with id " + id + " created");
     }

@@ -10,5 +10,6 @@ public interface OrderProductService {
     Long createOrdProd(OrderProduct orderProduct);
     Long updateOrdProd(OrderProduct orderProduct);
     Long deleteOrdProd(Long idOrder);
+    List<OrderProduct> getAllByOrderStatus(String status);
 
 }

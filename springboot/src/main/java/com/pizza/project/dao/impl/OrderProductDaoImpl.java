@@ -46,7 +46,7 @@ public class OrderProductDaoImpl implements OrderProductDao {
                 .addValue(OrderProductSQL.PARAM_ID_ORDER, object.getOrder().getId())
                 .addValue(OrderProductSQL.PARAM_ID_PRODUCT, object.getProduct().getId())
                 .addValue(OrderProductSQL.PARAM_COUNT_PRODUCT, object.getCountProduct());
-        return simpleJdbcInsert.executeAndReturnKey(parameter).longValue();
+        return (long) jdbcTemplate.update(OrderProductSQL.QUERY_INSERT_INTO, parameter);
     }
 
     @Override
@@ -83,6 +83,15 @@ public class OrderProductDaoImpl implements OrderProductDao {
                 .addValue(OrderProductSQL.PARAM_ID_ORDER, idOrder)
                 .addValue(OrderProductSQL.PARAM_ID_PRODUCT, idProduct);
         return jdbcTemplate.query(OrderProductSQL.QUERY_BY_ID_ORDER_AND_ID_PRODUCT, parameter, orderProductExtractor).stream().findFirst().orElse(null);
+    }
+    @Override
+    public List<OrderProduct> getAllByOrderStatus(String status) {
+        if (status == null){
+            return null;
+        }
+        SqlParameterSource parameter = new MapSqlParameterSource()
+                .addValue(OrderProductSQL.PARAM_STATUS_ORDER, status);
+        return jdbcTemplate.query(OrderProductSQL.QUERY_GET_ALL_BY_STATUS, parameter, orderProductExtractor);
     }
 
     private class OrderProductExtractor implements ResultSetExtractor<List<OrderProduct>>{

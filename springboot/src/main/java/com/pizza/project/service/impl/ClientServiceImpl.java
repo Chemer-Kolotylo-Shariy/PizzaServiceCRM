@@ -27,13 +27,17 @@ public class ClientServiceImpl implements ClientService {
 
     @Override
     public Client getById(Long id) {
+
         return clientDao.get(id);
     }
 
     @Override
     @Transactional
     public Client getByPhone(Long phone) {
-        return clientDao.getByPhone(phone);
+        Client client = clientDao.getByPhone(phone);
+        String name = client.getName();
+        System.out.println(name);
+        return client;
     }
 
     @Override

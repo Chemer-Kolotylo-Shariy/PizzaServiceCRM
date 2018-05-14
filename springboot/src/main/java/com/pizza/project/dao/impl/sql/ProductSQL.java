@@ -18,7 +18,7 @@ public class ProductSQL {
                                         "WHERE id_category = :id_category;";
 
     public static final String QUERY_GET_BY_ID = "SELECT p.id, p.name, p.specification,  " +
-            "p.amount, p.photo, p.price, p.persent, p.id_category, p.id_size " +
+            "p.amount, p.photo, p.price, p.persent, p.id_category, p.id_size, s.size " +
             "FROM product p " +
             "INNER JOIN size s " +
             "ON p.id_size = s.id " +

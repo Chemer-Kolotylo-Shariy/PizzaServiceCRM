@@ -17,6 +17,10 @@ public class Product {
     public Product() {
     }
 
+    public Product(Integer id) {
+        this.id = Long.valueOf(id);
+    }
+
     public Product(Long id, String name, String specification,
                    Integer amount, String photo, Double price, Integer persent,
                    Category category, Size size) {

@@ -1,12 +1,7 @@
 package com.pizza.project.service.impl;
 
-import com.pizza.project.dao.AddressDao;
-import com.pizza.project.dao.ClientDao;
-import com.pizza.project.dao.OrderDao;
-import com.pizza.project.dao.PaymentDao;
-import com.pizza.project.model.Address;
-import com.pizza.project.model.Client;
-import com.pizza.project.model.Order;
+import com.pizza.project.dao.*;
+import com.pizza.project.model.*;
 import com.pizza.project.model.enums.Delivery;
 import com.pizza.project.model.enums.OrderStatus;
 import com.pizza.project.model.enums.Role;
@@ -20,14 +15,16 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 
 @Service
-public class OrderServiceTest implements OrderService{
+public class OrderServiceImpl implements OrderService{
 
     private PaymentDao paymentDao;
     private OrderDao orderDao;
     private ClientDao clientDao;
     private AddressDao addressDao;
+    private OrderProductDao orderProduct;
 
 
     private DateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy");
@@ -41,11 +38,12 @@ public class OrderServiceTest implements OrderService{
 //System.out.println(dateFormat.format(cal)); //2016/11/16 12:08:43
 
     @Autowired
-    public OrderServiceTest(OrderDao orderDao, ClientDao clientDao, AddressDao addressDao, PaymentDao paymentDao) {
+    public OrderServiceImpl(OrderDao orderDao, ClientDao clientDao, AddressDao addressDao, PaymentDao paymentDao, OrderProductDao orderProduct) {
         this.orderDao = orderDao;
         this.clientDao = clientDao;
         this.addressDao = addressDao;
         this.paymentDao = paymentDao;
+        this.orderProduct = orderProduct;
     }
 
     @Transactional
@@ -54,8 +52,7 @@ public class OrderServiceTest implements OrderService{
         Order o = new Order();
         o.setPrice(order.getPrice());
         o.setPayment(paymentDao.get(order.getPayment()));
-        //TODO change gelivery
-        o.setDelivery(Delivery.DELIVERY_MYSELF);
+        o.setDelivery(order.getDelivery());
         o.setDate(dateFormat.format(new Date()));
         o.setTime(timeFormat.format(new Date()));
         o.setOrderStatus(OrderStatus.CLIENT_CONFIR);
@@ -98,13 +95,26 @@ public class OrderServiceTest implements OrderService{
                 o.setAddress(a);
                 ex.printStackTrace();
             } finally {
-                return orderDao.create(o);
+                Long id = orderDao.create(o);
+
+                for (int i = 0; i < order.getProducts().size(); i++) {
+                    OrderProduct op = new OrderProduct(new Order(id), new Product(order.getProducts().get(i).getId()), order.getProducts().get(i).getQuantity());
+                    orderProduct.create(op);
+                }
+                return id;
             }
         }
     }
 
+    @Transactional
     @Override
-    public Long changeStatus(Order order, String status) {
-        return orderDao.changeStatus(order, status);
+    public Long changeStatus(Integer id, Integer status) {
+        return orderDao.changeStatus(id, status);
+    }
+
+    @Transactional
+    @Override
+    public List<Order> getOrdersByStatus(String status) {
+        return orderDao.getByStatus(status);
     }
 }

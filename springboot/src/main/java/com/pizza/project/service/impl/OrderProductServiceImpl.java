@@ -48,4 +48,9 @@ public class OrderProductServiceImpl implements OrderProductService {
     public Long deleteOrdProd(Long idOrder) {
         return null;
     }
+
+    @Override
+    public List<OrderProduct> getAllByOrderStatus(String status) {
+        return orderProductDao.getAllByOrderStatus(status);
+    }
 }

@@ -8,16 +8,20 @@ public class Order {
     private Double price;
     private OrderStatus orderStatus;
     private Payment payment;
-    private Delivery delivery;
+    private Integer delivery;
     private Client client;
     private Address address;
     private String date;
     private String time;
+    private String delivery_str;
 
-    public Order() {
+    public Order() { }
+
+    public Order(Long id) {
+        this.id = id;
     }
 
-    public Order(String date, String time, Double price, OrderStatus orderStatus, Payment payment, Delivery delivery, Client client, Address address) {
+    public Order(String date, String time, Double price, OrderStatus orderStatus, Payment payment, Integer delivery, Client client, Address address) {
         this.date = date;
         this.time = time;
         this.price = price;
@@ -30,7 +34,7 @@ public class Order {
 
     public Order(Long id, String date, String time,
                  Double price, OrderStatus orderStatus,
-                 Payment payment, Delivery delivery,
+                 Payment payment, Integer delivery,
                  Client client, Address address) {
         this.id = id;
         this.date = date;
@@ -41,6 +45,14 @@ public class Order {
         this.delivery = delivery;
         this.client = client;
         this.address = address;
+    }
+
+    public String getDelivery_str() {
+        return delivery_str;
+    }
+
+    public void setDelivery_str(String delivery_str) {
+        this.delivery_str = delivery_str;
     }
 
     public Long getId() {
@@ -91,11 +103,11 @@ public class Order {
         this.payment = payment;
     }
 
-    public Delivery getDelivery() {
+    public Integer getDelivery() {
         return delivery;
     }
 
-    public void setDelivery(Delivery delivery) {
+    public void setDelivery(Integer delivery) {
         this.delivery = delivery;
     }
 

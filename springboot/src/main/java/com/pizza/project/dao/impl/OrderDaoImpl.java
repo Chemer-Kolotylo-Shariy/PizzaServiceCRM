@@ -53,7 +53,7 @@ public class OrderDaoImpl implements OrderDao {
                 .addValue(OrderSQL.PARAM_PRICE, object.getPrice())
                 .addValue(OrderSQL.PARAM_ID_ORDER_STATUS, object.getOrderStatus().getId())
                 .addValue(OrderSQL.PARAM_ID_PAYMENT, object.getPayment().getId())
-                .addValue(OrderSQL.PARAM_ID_DELIVERY, object.getDelivery().getId())
+                .addValue(OrderSQL.PARAM_ID_DELIVERY, object.getDelivery())
                 .addValue(OrderSQL.PARAM_ID_CLIENT, object.getClient().getId())
                 .addValue(OrderSQL.PARAM_ID_ADDRESS, object.getAddress().getId())
                 .addValue(OrderSQL.PARAM_DATE, object.getDate())
@@ -93,8 +93,11 @@ public class OrderDaoImpl implements OrderDao {
     }
 
     @Override
-    public Long changeStatus(Order order, String status) {
-        return null;
+    public Long changeStatus(Integer id, Integer status) {
+        SqlParameterSource parameter = new MapSqlParameterSource()
+                .addValue(OrderSQL.PARAM_ID, id)
+                .addValue(OrderSQL.PARAM_ID_ORDER_STATUS, status);
+        return (long) jdbcTemplate.update(OrderSQL.QUERY_UPDATE_BY_ID, parameter);
     }
 
     @Override
@@ -125,11 +128,12 @@ public class OrderDaoImpl implements OrderDao {
                 order.setPrice(resultSet.getDouble(OrderSQL.PARAM_PRICE));
                 order.setOrderStatus(OrderStatus.valueOf(resultSet.getString(OrderSQL.PARAM_ORDER_STATUS)));
                 order.setPayment(paymentDao.get(resultSet.getInt(OrderSQL.PARAM_ID_PAYMENT)));
-                order.setDelivery(Delivery.valueOf(resultSet.getString(OrderSQL.PARAM_DELIVERY)));
+                order.setDelivery(resultSet.getInt(OrderSQL.PARAM_ID_DELIVERY));
                 order.setClient(clientDao.get(resultSet.getLong(OrderSQL.PARAM_ID_CLIENT)));
                 order.setAddress(addressDao.get(resultSet.getLong(OrderSQL.PARAM_ID_ADDRESS)));
                 order.setDate(resultSet.getString(OrderSQL.PARAM_DATE));
                 order.setTime(resultSet.getString(OrderSQL.PARAM_TIME));
+                order.setDelivery_str(resultSet.getString(OrderSQL.PARAM_DELIVERY));
 
                 orders.add(order);
             }

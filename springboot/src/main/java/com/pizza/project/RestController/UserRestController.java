@@ -12,7 +12,7 @@ public class UserRestController {
     private ClientService clientService;
 
     @CrossOrigin
-    @RequestMapping(value = "/{phone}", method = RequestMethod.GET)
+    @RequestMapping(value = "/user/{phone}", method = RequestMethod.GET)
     public Client getUserByPhone(@PathVariable("phone")Long number){
         Client client = clientService.getByPhone(number);
 
@@ -23,6 +23,6 @@ public class UserRestController {
     @RequestMapping(method = RequestMethod.POST)
     public Client createUser(@RequestBody Client user){
         Long id = clientService.create(user);
-        return clientService.getById(id);
+        return clientService.getByPhone(id);
     }
 }

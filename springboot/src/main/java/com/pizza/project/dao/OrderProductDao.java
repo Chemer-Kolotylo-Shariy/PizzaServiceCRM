@@ -7,5 +7,6 @@ import java.util.List;
 public interface OrderProductDao extends CrudDao<OrderProduct> {
     List<OrderProduct> getAllByOrderId(Long idOrder);
     OrderProduct getOrderProduct(Long idOrder, Long idProduct);
+    List<OrderProduct> getAllByOrderStatus(String status);
 
 }
